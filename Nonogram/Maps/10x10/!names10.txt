@@ -1,0 +1,8 @@
+pikachu
+question_mark
+fish
+leaf
+television
+camel
+pizza
+hot_air_balloon
