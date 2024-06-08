@@ -22,6 +22,7 @@ public class Game extends JFrame implements ActionListener, KeyListener {
 
     Game() {
         restart = false;
+        Nonogram.gameState = GameState.IN_PROGRESS;
 
         //frame setup
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -169,9 +170,10 @@ public class Game extends JFrame implements ActionListener, KeyListener {
                     buttons[i][j].setEnabled(false);
                 }
             }
-
+            
             Menu.picName();
             frame.dispose();
+            Nonogram.gameState = GameState.GAME_OVER;
         }
     } 
 
@@ -196,12 +198,21 @@ public class Game extends JFrame implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent e) {
         changeMode = false;
     }
-
-    //https://stackoverflow.com/questions/2536873/how-can-i-set-size-of-a-button
     
     //useless
     @Override
     public void keyTyped(KeyEvent e) {
     }
     
+}
+
+enum GameState {
+    IN_PROGRESS(0),
+    GAME_OVER(1);
+
+    final int state;
+
+    GameState (int state) {
+        this.state = state;
+    }
 }
